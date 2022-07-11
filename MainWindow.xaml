@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <TextBox Width="400" Grid.Column="0" HorizontalAlignment="Left" />
+        <DataGrid Name="Requests" Width="400" Grid.Column="1" HorizontalAlignment="Right" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="URL"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

@@ -24,18 +24,6 @@ namespace ProjektCSharp
         {
             this.logger.LogInformation("Booting application");
             base.OnStartup(e);
-            this.BootComponents(e);
-        }
-
-        private void BootComponents(StartupEventArgs e)
-        {
-            this.logger.LogInformation("Booting custom components");
-            var proxyThread = new Thread(() =>
-            {
-                var proxy = new Relay();
-                proxy.Listen(1234);
-            });
-            proxyThread.Start();
         }
     }
 }
