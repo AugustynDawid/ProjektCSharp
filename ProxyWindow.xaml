@@ -1,0 +1,17 @@
+<Window x:Class="ProjektCSharp.ProxyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektCSharp"
+        mc:Ignorable="d"
+        Title="ProxyWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Width="400" Grid.Column="0" HorizontalAlignment="Left" />
+        <DataGrid Name="Requests" Width="400" Grid.Column="1" HorizontalAlignment="Right" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="URL"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

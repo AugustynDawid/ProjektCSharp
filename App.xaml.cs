@@ -8,6 +8,7 @@ using System.Windows;
 using Proxy;
 using Microsoft.Extensions.Logging;
 using Utils;
+using System.Windows.Navigation;
 
 namespace ProjektCSharp
 {
@@ -15,15 +16,7 @@ namespace ProjektCSharp
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-
-
     {
-        private readonly ILogger logger = AppLoggerFactory.GetLogger("App");
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            this.logger.LogInformation("Booting application");
-            base.OnStartup(e);
-        }
     }
 }
