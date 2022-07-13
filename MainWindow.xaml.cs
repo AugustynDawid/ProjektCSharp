@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using Proxy;
+using Microsoft.Extensions.Logging;
+using Utils;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ProjektCSharp
 {
@@ -20,9 +18,24 @@ namespace ProjektCSharp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ILogger logger = AppLoggerFactory.GetLogger("MainWindow");
+
         public MainWindow()
         {
+            logger.LogInformation("Initializing");
             InitializeComponent();
+        }
+
+        private void StartProxy_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            var portString = Port_TBox.Text;
+            logger.LogInformation(String.Format("Trying to start proxy on port {0}", portString));
+            var port = int.Parse(portString);
+            Proxy.Relay.StartInstance(port);
+
+            var requestsWindow = new RequestsWindow();
+            requestsWindow.Show();
+            this.Close();
         }
     }
 }
