@@ -52,7 +52,8 @@ namespace Proxy
 
         private void SetupListener()
         {
-            new Thread(HandleRequests);
+            var handler = new Thread(HandleRequests);
+            handler.Start();
         }
 
         private void HandleRequests()
@@ -61,10 +62,24 @@ namespace Proxy
             {
                 var context = listener.GetContext();
                 logger.LogDebug("Received request");
-                var request = context.Request;
+                if (context != null)
+                {
+                    var interceptorThread = new Thread(() => InterceptRequest(context));
+                    interceptorThread.Start();
+                }
             }
 
             listener.Close();
+        }
+
+        private void InterceptRequest(HttpListenerContext ctx)
+        {
+            var req = ctx.Request;
+            if (req == null)
+            {
+                logger.LogWarning("Received empty request");
+                return;
+            }
         }
     }
 }
