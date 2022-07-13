@@ -17,8 +17,11 @@ namespace ProjektCSharp
     /// </summary>
     public partial class ProxyWindow : Window
     {
+        private readonly ILogger logger = AppLoggerFactory.GetLogger("ProxyWindow");
+
         public ProxyWindow()
         {
+            logger.LogInformation("Initializing");
             InitializeComponent();
         }
     }

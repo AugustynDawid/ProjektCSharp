@@ -9,14 +9,22 @@
         
     <Grid Width="300">
         <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-        <Label Grid.Column="0"
+        <Label
+            Grid.Column="0"
             Width="200"
             Content="Enter port number..."
             Height="28"
             Name="BaseLabel"
             Margin="0,40,0,0"
         />
-        <TextBox Grid.Column="0" Width="200" Height="20">3128</TextBox>
-        <Button HorizontalAlignment="Right" Width="100" Height="20" Grid.Column="1">Start proxy</Button>
+        <TextBox Grid.Column="0" x:Name="Port_TBox" Width="200" Height="20">3128</TextBox>
+        <Button
+            HorizontalAlignment="Right"
+            x:Name="StartProxy_Btn"
+            Width="100"
+            Height="20"
+            Grid.Column="1"
+            Click="StartProxy_Btn_Click"
+        >Start proxy</Button>
     </Grid>
 </Window>
