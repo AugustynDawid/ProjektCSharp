@@ -15,11 +15,11 @@ namespace ProjektCSharp
     /// <summary>
     /// Interaction logic for ProxyWindow.xaml
     /// </summary>
-    public partial class ProxyWindow : Window
+    public partial class RequestsWindow : Window
     {
-        private readonly ILogger logger = AppLoggerFactory.GetLogger("ProxyWindow");
+        private readonly ILogger logger = AppLoggerFactory.GetLogger("RequestsWindow");
 
-        public ProxyWindow()
+        public RequestsWindow()
         {
             logger.LogInformation("Initializing");
             InitializeComponent();

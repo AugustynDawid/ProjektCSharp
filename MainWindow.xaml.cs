@@ -32,6 +32,10 @@ namespace ProjektCSharp
             logger.LogInformation(String.Format("Trying to start proxy on port {0}", portString));
             var port = int.Parse(portString);
             Proxy.Relay.StartInstance(port);
+
+            var requestsWindow = new RequestsWindow();
+            requestsWindow.Show();
+            this.Close();
         }
     }
 }
