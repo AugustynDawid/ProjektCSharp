@@ -1,11 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Utils;
 using System;
 
 namespace Models
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Request> Requests { get; set; }
+        private ILogger logger = AppLoggerFactory.GetLogger("ApplicationDbContext");
+
+        public DbSet<Request>? Requests { get; set; }
 
         public string DbPath { get; }
 
@@ -14,6 +18,7 @@ namespace Models
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
             DbPath = System.IO.Path.Join(path, "app.db");
+            logger.LogDebug(String.Format("Set db path to {0}", DbPath));
         }
 
         // The following configures EF to create a Sqlite database file in the

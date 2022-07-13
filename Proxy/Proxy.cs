@@ -50,6 +50,13 @@ namespace Proxy
             SetupListener();
         }
 
+        public void Close()
+        {
+            logger.LogInformation("Closing Relay");
+            shouldHandleRequests = false;
+            listener.Close();
+        }
+
         private void SetupListener()
         {
             var handler = new Thread(HandleRequests);
@@ -60,16 +67,23 @@ namespace Proxy
         {
             while (shouldHandleRequests)
             {
-                var context = listener.GetContext();
+                HttpListenerContext context;
+                try
+                {
+                    context = listener.GetContext();
+                }
+                catch
+                {
+                    continue;
+                }
+
+
                 logger.LogDebug("Received request");
                 if (context != null)
                 {
-                    var interceptorThread = new Thread(() => InterceptRequest(context));
-                    interceptorThread.Start();
+                    InterceptRequest(context);
                 }
             }
-
-            listener.Close();
         }
 
         private void InterceptRequest(HttpListenerContext ctx)

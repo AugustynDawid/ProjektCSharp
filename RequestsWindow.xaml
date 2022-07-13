@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektCSharp"
         mc:Ignorable="d"
-        Title="RequestsWindow" Height="450" Width="800">
+        Title="RequestsWindow" Height="450" Width="800"
+        Closing="OnWindowClosing"
+    >
     <Grid>
         <TextBox Width="400" Grid.Column="0" HorizontalAlignment="Left" />
         <DataGrid Name="Requests" Width="400" Grid.Column="1" HorizontalAlignment="Right" >

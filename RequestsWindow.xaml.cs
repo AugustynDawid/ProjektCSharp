@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading;
 using System.Windows;
-using Proxy;
 using Microsoft.Extensions.Logging;
 using Utils;
-using System.Windows.Navigation;
+using Proxy;
+using System.ComponentModel;
 
 namespace ProjektCSharp
 {
@@ -23,6 +17,13 @@ namespace ProjektCSharp
         {
             logger.LogInformation("Initializing");
             InitializeComponent();
+        }
+
+        public void OnWindowClosing(object? sender, CancelEventArgs e)
+        {
+            logger.LogInformation("Handling window closing");
+            var relay = Proxy.Relay.GetInstance();
+            relay.Close();
         }
     }
 }
