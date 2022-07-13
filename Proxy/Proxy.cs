@@ -2,6 +2,8 @@ using System;
 using System.Net;
 using Microsoft.Extensions.Logging;
 using Utils;
+using System.Threading;
+
 
 namespace Proxy
 {
@@ -35,14 +37,34 @@ namespace Proxy
         }
         private Relay() { }
 
+        private bool shouldHandleRequests = true;
+
         private readonly HttpListener listener = new HttpListener();
 
         public void Listen(int port)
         {
-            var portPrefix = String.Format("http://*:{0}/", port);
-            logger.LogInformation(String.Format("Relay starting at {}", portPrefix));
+            var portPrefix = String.Format("http://localhost:{0}/", port);
+            logger.LogInformation(String.Format("Relay starting at {0}", portPrefix));
             this.listener.Prefixes.Add(portPrefix);
             this.listener.Start();
+            SetupListener();
+        }
+
+        private void SetupListener()
+        {
+            new Thread(HandleRequests);
+        }
+
+        private void HandleRequests()
+        {
+            while (shouldHandleRequests)
+            {
+                var context = listener.GetContext();
+                logger.LogDebug("Received request");
+                var request = context.Request;
+            }
+
+            listener.Close();
         }
     }
 }
