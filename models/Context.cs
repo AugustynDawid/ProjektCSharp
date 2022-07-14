@@ -9,7 +9,10 @@ namespace Models
     {
         private ILogger logger = AppLoggerFactory.GetLogger("ApplicationDbContext");
 
-        public DbSet<Request>? Requests { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ReservationGuest> ReservationGuests { get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
         public string DbPath { get; }
 
