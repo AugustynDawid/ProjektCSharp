@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
 namespace Utils
 {
@@ -10,6 +9,7 @@ namespace Utils
             builder.ClearProviders();
             builder.AddConsole();
         });
+
         public static ILogger GetLogger(string name)
         {
             var logger = _Factory.CreateLogger(name);

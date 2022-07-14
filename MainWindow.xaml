@@ -24,7 +24,6 @@
             Width="100"
             Height="20"
             Grid.Column="1"
-            Click="StartProxy_Btn_Click"
         >Start proxy</Button>
     </Grid>
 </Window>
