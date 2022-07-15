@@ -9,11 +9,11 @@ using System.Collections.ObjectModel;
 
 namespace Views
 {
-    public partial class AddWindow : Window
+    public partial class AddClientWindow : Window
     {
         private readonly ILogger logger = AppLoggerFactory.GetLogger("MainWindow");
 
-        public AddWindow()
+        public AddClientWindow()
         {
             logger.LogInformation("Initializing");
             InitializeComponent();
