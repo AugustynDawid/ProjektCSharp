@@ -1,17 +1,14 @@
-﻿using System.Windows;
+using System.Windows;
 using Microsoft.Extensions.Logging;
 using Utils;
 
-namespace ProjektCSharp
+namespace Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWindow : Window
     {
         private readonly ILogger logger = AppLoggerFactory.GetLogger("MainWindow");
 
-        public MainWindow()
+        public AddWindow()
         {
             logger.LogInformation("Initializing");
             InitializeComponent();

@@ -1,0 +1,36 @@
+using System;
+using Models;
+
+namespace Repositories
+{
+    public abstract class BaseRepository : IDisposable
+    {
+        protected ApplicationDbContext Context;
+
+        protected BaseRepository(ApplicationDbContext Context)
+        {
+            this.Context = Context;
+        }
+
+        protected bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    Context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+    }
+}

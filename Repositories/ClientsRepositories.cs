@@ -1,25 +1,27 @@
 using Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Repositories
 {
-    public class ClientsRepository
+    public class ClientsRepository : BaseRepository
     {
-        private DbSet<Client> Ctx;
-
-        public ClientsRepository(ApplicationDbContext AppContext)
-        {
-            this.Ctx = AppContext.Clients;
-        }
+        public ClientsRepository(ApplicationDbContext AppContext) : base(AppContext) { }
 
         public void InsertUser(Client entity)
         {
-            Ctx.Add(entity);
+            Context.Clients.Add(entity);
         }
 
         public void FindUser(int id)
         {
-            Ctx.Find(id);
+            Context.Clients.Find(id);
+        }
+
+        public async Task<List<Client>> GetAll()
+        {
+            return await Context.Clients.ToListAsync();
         }
     }
 }
