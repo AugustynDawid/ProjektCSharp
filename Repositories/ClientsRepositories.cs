@@ -7,14 +7,14 @@ namespace Repositories
 {
     public class ClientsRepository : BaseRepository
     {
-        public ClientsRepository(ApplicationDbContext AppContext) : base(AppContext) { }
+        public ClientsRepository() : base() { }
 
-        public void InsertUser(Client entity)
+        public void InsertClient(Client entity)
         {
             Context.Clients.Add(entity);
         }
 
-        public void FindUser(int id)
+        public void FindClient(int id)
         {
             Context.Clients.Find(id);
         }

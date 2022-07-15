@@ -7,9 +7,9 @@ namespace Repositories
     {
         protected ApplicationDbContext Context;
 
-        protected BaseRepository(ApplicationDbContext Context)
+        protected BaseRepository()
         {
-            this.Context = Context;
+            this.Context = new ApplicationDbContext();
         }
 
         protected bool disposed = false;

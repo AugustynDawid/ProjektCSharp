@@ -1,11 +1,10 @@
 using System.Windows;
+using System;
 using Microsoft.Extensions.Logging;
 using Utils;
-using System.Data;
-using System.Windows.Data;
-using System.Windows.Navigation;
+using Models;
 using Repositories;
-using System.Collections.ObjectModel;
+
 
 namespace Views
 {
@@ -17,6 +16,27 @@ namespace Views
         {
             logger.LogInformation("Initializing");
             InitializeComponent();
+        }
+
+        private void AddUserSubmit(object sender, RoutedEventArgs e)
+        {
+            var client = new Client();
+            client.Name = Name_TBox.Text;
+            client.Email = Email_TBox.Text;
+            client.Notes = Notes_TBox.Text;
+
+            using (var repository = new ClientsRepository())
+            {
+                try
+                {
+                    repository.InsertClient(client);
+                    this.Close();
+                }
+                catch (Exception err)
+                {
+                    logger.LogError(err.ToString());
+                }
+            }
         }
     }
 }
