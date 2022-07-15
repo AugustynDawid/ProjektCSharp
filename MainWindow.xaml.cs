@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Microsoft.Extensions.Logging;
 using Utils;
+using Views;
 
 namespace ProjektCSharp
 {
@@ -15,6 +16,17 @@ namespace ProjektCSharp
         {
             logger.LogInformation("Initializing");
             InitializeComponent();
+        }
+
+        private void AddClient(object sender, RoutedEventArgs e)
+        {
+            OpenAddWindow();
+        }
+
+        private void OpenAddWindow()
+        {
+            var addWindow = new AddWindow();
+            addWindow.Show();
         }
     }
 }

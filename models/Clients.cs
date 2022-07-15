@@ -12,6 +12,8 @@ namespace Models
         [Required(ErrorMessage = "Please provide client email")]
         public string Email { get; set; }
 
+        public string? Notes { get; set; }
+
         public ReservationGuest ReservationsData { get; set; }
     }
 }

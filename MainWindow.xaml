@@ -28,7 +28,7 @@
   
       <TextBlock FontSize="12" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Clients</TextBlock> 
       <Button FontSize="12" Grid.Row="1" Grid.Column="1" Height="20" Width="50">Manage</Button>  
-      <Button FontSize="12" Grid.Row="1" Grid.Column="2" Height="20" Width="30">Add</Button>  
+      <Button FontSize="12" Grid.Row="1" Grid.Column="2" Height="20" Width="30" Click="AddClient">Add</Button>  
       <TextBlock FontSize="12" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Reservations</TextBlock>  
       <Button FontSize="12" Grid.Row="2" Grid.Column="1" Height="20" Width="50">Manage</Button>  
       <Button FontSize="12" Grid.Row="2" Grid.Column="2" Height="20" Width="30">Add</Button>
