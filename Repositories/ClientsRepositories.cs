@@ -12,14 +12,10 @@ namespace Repositories
         public void InsertClient(Client entity)
         {
             Context.Clients.Add(entity);
+            Context.SaveChanges();
         }
 
-        public void FindClient(int id)
-        {
-            Context.Clients.Find(id);
-        }
-
-        public async Task<List<Client>> GetAll()
+        public async Task<List<Client>> GetAllClients()
         {
             return await Context.Clients.ToListAsync();
         }

@@ -10,7 +10,7 @@ namespace Views
 {
     public partial class AddClientWindow : Window
     {
-        private readonly ILogger logger = AppLoggerFactory.GetLogger("MainWindow");
+        private readonly ILogger logger = AppLoggerFactory.GetLogger("AddClientWindow");
 
         public AddClientWindow()
         {

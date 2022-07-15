@@ -20,8 +20,14 @@ namespace ProjektCSharp
 
         private void AddClient(object sender, RoutedEventArgs e)
         {
-            var addWindow = new AddClientWindow();
-            addWindow.Show();
+            var window = new AddClientWindow();
+            window.Show();
+        }
+
+        private void ManageClients(object sender, RoutedEventArgs e)
+        {
+            var window = new ListClientsWindow();
+            window.Show();
         }
     }
 }
