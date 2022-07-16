@@ -10,6 +10,7 @@ namespace Models
 
         [Required(ErrorMessage = "Please provide information about choosen room")]
         public Room Room { get; set; }
+        public int RoomId { get; set; }
 
         public List<ReservationGuest> ReservationGuests { get; set; }
 

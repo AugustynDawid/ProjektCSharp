@@ -56,7 +56,7 @@ namespace Views
             Reservation reservation = new Reservation();
             reservation.ReservationEnd = endDate;
             reservation.ReservationStart = startDate;
-            reservation.Room = room;
+            reservation.RoomId = roomId;
             reservation.ReservationGuests = guests;
 
             using (ReservationsRepository reservationsRepository = new ReservationsRepository())
