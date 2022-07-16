@@ -1,11 +1,12 @@
 using System.Windows;
-using System;
+using System.Windows.Controls;
 using Microsoft.Extensions.Logging;
 using Utils;
 using Models;
 using Repositories;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System;
 
 namespace Views
 {
@@ -23,15 +24,39 @@ namespace Views
             logger.LogInformation("Initializing");
             InitializeComponent();
 
-            ObservableCollection<Client> clients = await GetClients();
-            ClientsDG.DataContext = clients;
+            await RefreshClientsDG();
+        }
+
+        private async void DeleteButtonClick(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Client client = button.DataContext as Client;
+            await RemoveUser(client.Id);
+        }
+
+        private async Task RemoveUser(int id)
+        {
+            using (var repo = new ClientsRepository())
+            {
+                repo.DeleteClient(id);
+            }
+
+            await RefreshClientsDG();
         }
 
         private async Task<ObservableCollection<Client>> GetClients()
         {
-            var repo = new ClientsRepository();
-            var clients = await repo.GetAllClients();
-            return new ObservableCollection<Client>(clients);
+            using (var repo = new ClientsRepository())
+            {
+                var clients = await repo.GetAllClients();
+                return new ObservableCollection<Client>(clients);
+            }
+        }
+
+        private async Task RefreshClientsDG()
+        {
+            ObservableCollection<Client> clients = await GetClients();
+            ClientsDG.DataContext = clients;
         }
     }
 }
