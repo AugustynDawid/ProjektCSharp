@@ -15,6 +15,11 @@ namespace Repositories
             Context.SaveChanges();
         }
 
+        public Room? GetRoom(int id)
+        {
+            return Context.Rooms.Find(id);
+        }
+
         public async Task<List<Room>> GetAllRooms()
         {
             return await Context.Rooms.ToListAsync();

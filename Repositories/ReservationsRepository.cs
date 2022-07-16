@@ -9,24 +9,15 @@ namespace Repositories
     {
         public ReservationsRepository() : base() { }
 
-        public void InsertReservation()
+        public void InsertReservation(Reservation entity)
         {
-            //Context.Clients.Add(entity);
+            Context.Reservations.Add(entity);
             Context.SaveChanges();
         }
 
-        public async Task<List<Client>> GetAllClients()
+        public async Task<List<Reservation>> GetAllReservations()
         {
-            return await Context.Clients.ToListAsync();
-        }
-
-        public void DeleteClient(int id)
-        {
-            Client client = new Client();
-            client.Id = id;
-            Context.Clients.Attach(client);
-            Context.Clients.Remove(client);
-            Context.SaveChanges();
+            return await Context.Reservations.ToListAsync();
         }
     }
 }
