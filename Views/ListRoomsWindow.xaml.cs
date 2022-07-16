@@ -9,11 +9,11 @@ using System.Collections.ObjectModel;
 
 namespace Views
 {
-    public partial class ListClientsWindow : Window
+    public partial class ListRoomsWindow : Window
     {
-        private readonly ILogger logger = AppLoggerFactory.GetLogger("ListClientsWindow");
+        private readonly ILogger logger = AppLoggerFactory.GetLogger("ListRoomsWindow");
 
-        public ListClientsWindow()
+        public ListRoomsWindow()
         {
             SetupWindow();
         }
@@ -23,24 +23,24 @@ namespace Views
             logger.LogInformation("Initializing");
             InitializeComponent();
 
-            await RefreshClientsDG();
+            await RefreshRoomsDG();
         }
 
         private async void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Client client = button.DataContext as Client;
-            await RemoveUser(client.Id);
+            Room client = button.DataContext as Room;
+            await RemoveRoom(client.Id);
         }
 
-        private async Task RemoveUser(int id)
+        private async Task RemoveRoom(int id)
         {
-            using (var repo = new ClientsRepository())
+            using (var repo = new RoomsRepository())
             {
-                repo.DeleteClient(id);
+                repo.DeleteRoom(id);
             }
 
-            await RefreshClientsDG();
+            await RefreshRoomsDG();
         }
 
         private async Task<ObservableCollection<Client>> GetClients()
@@ -52,10 +52,10 @@ namespace Views
             }
         }
 
-        private async Task RefreshClientsDG()
+        private async Task RefreshRoomsDG()
         {
             ObservableCollection<Client> clients = await GetClients();
-            ClientsDG.DataContext = clients;
+            RoomsDG.DataContext = clients;
         }
     }
 }

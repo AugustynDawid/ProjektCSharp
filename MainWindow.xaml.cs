@@ -29,5 +29,17 @@ namespace ProjektCSharp
             var window = new ListClientsWindow();
             window.Show();
         }
+
+        private void AddRoom(object sender, RoutedEventArgs e)
+        {
+            var window = new AddRoomWindow();
+            window.Show();
+        }
+
+        private void ManageRooms(object sender, RoutedEventArgs e)
+        {
+            var window = new ListRoomsWindow();
+            window.Show();
+        }
     }
 }
