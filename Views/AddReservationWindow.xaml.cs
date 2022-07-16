@@ -1,10 +1,6 @@
 using System.Windows;
-using System;
 using Microsoft.Extensions.Logging;
 using Utils;
-using Models;
-using Repositories;
-
 
 namespace Views
 {
@@ -16,6 +12,10 @@ namespace Views
         {
             logger.LogInformation("Initializing");
             InitializeComponent();
+        }
+
+        private void SetupRoomsDropdown()
+        {
         }
 
         private void AddReservationSubmit(object sender, RoutedEventArgs e)

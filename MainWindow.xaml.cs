@@ -30,6 +30,12 @@ namespace ProjektCSharp
             window.Show();
         }
 
+        private void AddReservation(object sender, RoutedEventArgs e)
+        {
+            var window = new AddReservationWindow();
+            window.Show();
+        }
+
         private void AddRoom(object sender, RoutedEventArgs e)
         {
             var window = new AddRoomWindow();
