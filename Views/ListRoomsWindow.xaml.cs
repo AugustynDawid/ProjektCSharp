@@ -43,18 +43,18 @@ namespace Views
             await RefreshRoomsDG();
         }
 
-        private async Task<ObservableCollection<Client>> GetClients()
+        private async Task<ObservableCollection<Room>> GetRooms()
         {
-            using (var repo = new ClientsRepository())
+            using (var repo = new RoomsRepository())
             {
-                var clients = await repo.GetAllClients();
-                return new ObservableCollection<Client>(clients);
+                var rooms = await repo.GetAllRooms();
+                return new ObservableCollection<Room>(rooms);
             }
         }
 
         private async Task RefreshRoomsDG()
         {
-            ObservableCollection<Client> clients = await GetClients();
+            ObservableCollection<Room> clients = await GetRooms();
             RoomsDG.DataContext = clients;
         }
     }
