@@ -19,5 +19,14 @@ namespace Repositories
         {
             return await Context.Clients.ToListAsync();
         }
+
+        public void DeleteClient(int id)
+        {
+            Client client = new Client();
+            client.Id = id;
+            Context.Clients.Attach(client);
+            Context.Clients.Remove(client);
+            Context.SaveChanges();
+        }
     }
 }
